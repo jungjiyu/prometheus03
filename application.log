@@ -1,0 +1,105 @@
+2024-09-09T17:22:03.273+09:00  INFO 13952 --- [ai01] [main] com.example.ai01.Ai01Application         : Starting Ai01Application using Java 21.0.4 with PID 13952 (C:\jiyu\springboot_project\0909\build\classes\java\main started by jiyu in C:\jiyu\springboot_project\0909)
+2024-09-09T17:22:03.275+09:00 DEBUG 13952 --- [ai01] [main] com.example.ai01.Ai01Application         : Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-09-09T17:22:03.276+09:00  INFO 13952 --- [ai01] [main] com.example.ai01.Ai01Application         : No active profile set, falling back to 1 default profile: "default"
+2024-09-09T17:22:04.266+09:00  INFO 13952 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-09T17:22:04.336+09:00  INFO 13952 --- [ai01] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 1 JPA repository interface.
+2024-09-09T17:22:05.143+09:00  INFO 13952 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-09-09T17:22:05.411+09:00  INFO 13952 --- [ai01] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-09T17:22:05.412+09:00  INFO 13952 --- [ai01] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-09T17:22:05.516+09:00  INFO 13952 --- [ai01] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-09T17:22:05.516+09:00  INFO 13952 --- [ai01] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2190 ms
+2024-09-09T17:22:05.740+09:00 DEBUG 13952 --- [ai01] [main] c.e.ai01.security.filter.CustomFilter    : Filter 'customFilter' configured for use
+2024-09-09T17:22:05.741+09:00 DEBUG 13952 --- [ai01] [main] c.e.a.security.filter.JwtRequestFilter   : Filter 'jwtRequestFilter' configured for use
+2024-09-09T17:22:05.907+09:00  INFO 13952 --- [ai01] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-09T17:22:05.996+09:00  INFO 13952 --- [ai01] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-09T17:22:06.041+09:00  INFO 13952 --- [ai01] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-09-09T17:22:06.423+09:00  INFO 13952 --- [ai01] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-09T17:22:06.461+09:00  INFO 13952 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-09T17:22:06.789+09:00  INFO 13952 --- [ai01] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65da1cbe
+2024-09-09T17:22:06.791+09:00  INFO 13952 --- [ai01] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-09T17:22:06.848+09:00  WARN 13952 --- [ai01] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-09T17:22:07.722+09:00  INFO 13952 --- [ai01] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-09T17:22:07.762+09:00  INFO 13952 --- [ai01] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-09T17:22:08.105+09:00  INFO 13952 --- [ai01] [main] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2024-09-09T17:22:08.106+09:00  INFO 13952 --- [ai01] [main] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2024-09-09T17:22:08.174+09:00  INFO 13952 --- [ai01] [main] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2024-09-09T17:22:08.228+09:00  INFO 13952 --- [ai01] [main] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2024-09-09T17:22:08.232+09:00  INFO 13952 --- [ai01] [main] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    0 nanoseconds spent acquiring 0 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    0 nanoseconds spent preparing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    0 nanoseconds spent executing 0 pre-partial-flushes;
+    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
+2024-09-09T17:22:08.353+09:00  WARN 13952 --- [ai01] [main] r$InitializeUserDetailsManagerConfigurer : Found 2 UserDetailsService beans, with names [customUserDetailsService, userDetailsService]. Global Authentication Manager will not use a UserDetailsService for username/password login. Consider publishing a single UserDetailsService bean.
+2024-09-09T17:22:08.425+09:00  WARN 13952 --- [ai01] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-09T17:22:08.909+09:00  INFO 13952 --- [ai01] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 16 endpoints beneath base path '/actuator'
+2024-09-09T17:22:09.355+09:00  INFO 13952 --- [ai01] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-09-09T17:22:09.365+09:00  INFO 13952 --- [ai01] [main] com.example.ai01.Ai01Application         : Started Ai01Application in 6.527 seconds (process running for 6.964)
+2024-09-09T17:22:09.693+09:00  INFO 13952 --- [ai01] [main] i.StatisticalLoggingSessionEventListener : Session Metrics {
+    869700 nanoseconds spent acquiring 1 JDBC connections;
+    0 nanoseconds spent releasing 0 JDBC connections;
+    1625099 nanoseconds spent preparing 1 JDBC statements;
+    2231600 nanoseconds spent executing 1 JDBC statements;
+    0 nanoseconds spent executing 0 JDBC batches;
+    0 nanoseconds spent performing 0 L2C puts;
+    0 nanoseconds spent performing 0 L2C hits;
+    0 nanoseconds spent performing 0 L2C misses;
+    0 nanoseconds spent executing 0 flushes (flushing a total of 0 entities and 0 collections);
+    1122108388497901 nanoseconds spent executing 1 pre-partial-flushes;
+    7599 nanoseconds spent executing 1 partial-flushes (flushing a total of 0 entities and 0 collections)
+}
