@@ -1,8 +1,8 @@
 package com.example.ai01.ai.groq.service;
 
-import com.example.ai01.ai.groq.config.GroqApiConfig;
 import com.example.ai01.ai.groq.dto.GroqApiRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -16,14 +16,14 @@ public class GroqApiService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
-    private GroqApiConfig groqApiConfig;
+    @Value("${groq.api.key}")
+    private String apiKey;
 
     public String completeText(GroqApiRequest request) {
         String url = "https://api.groq.com/openai/v1/chat/completions";
 
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "Bearer " + groqApiConfig.getApiKey());
+        headers.set("Authorization", "Bearer " + apiKey);
         headers.set("Content-Type", "application/json");
 
         String requestJson = "{\"messages\": [{\"role\": \"user\", \"content\": \"" + request.getPrompt() + "\"}], \"model\": \"" + request.getModelType() + "\"}";

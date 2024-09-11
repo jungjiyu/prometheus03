@@ -2,6 +2,7 @@ package com.example.ai01.ai.vllm.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -26,26 +27,30 @@ public class VllmService {
     private String flaskApiUrl;
 
 
-    public String analyzeImage(MultipartFile image) throws IOException {
-        String url = flaskApiUrl + "/analyze";
+    public String analyzeImage(String imageUrl) throws IOException {
+        // URL로부터 이미지 다운로드
+        byte[] imageBytes = restTemplate.getForObject(imageUrl, byte[].class);
 
+        // 다운로드 받은 이미지를 ByteArrayResource로 변환
+        ByteArrayResource imageResource = new ByteArrayResource(imageBytes) {
+            @Override
+            public String getFilename() {
+                return "image.jpg"; // 파일명을 지정
+            }
+        };
+
+        // Flask 서버로 요청 전송
+        String url = flaskApiUrl + "/analyze";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-        body.add("image", new FileSystemResource(convert(image)));
+        body.add("image", imageResource);
+//        body.add("instruction", "이미지에 대해 설명해주세요");
 
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
-
         ResponseEntity<String> response = restTemplate.postForEntity(url, requestEntity, String.class);
 
         return response.getBody();
     }
-
-    private File convert(MultipartFile file) throws IOException {
-        File convFile = new File(System.getProperty("java.io.tmpdir") + "/" + file.getOriginalFilename());
-        file.transferTo(convFile);
-        return convFile;
-    }
-
 }
