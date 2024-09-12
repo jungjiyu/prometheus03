@@ -17,16 +17,25 @@ public class OpenAIApiController {
 
     private final OpenAIApiService openAIService;
 
-    
-    // 글을 첨삭해주는 엔드포인트
+
+    // 프롬프트 직접
+    @PostMapping("/complete")
+    public String complete(@RequestBody OpenAIRequest openAIRequest) throws IOException {
+        return openAIService.complete(openAIRequest);
+    }
+
+
+    // 글을 첨삭
     @PostMapping("/advice")
     public String enhanceWriting(@RequestBody OpenAIRequest openAIRequest) throws IOException {
         return openAIService.enhanceWriting(openAIRequest);
     }
+    
 
+    //글의 유해성 판단
     @PostMapping("/harmfulness")
-    public String evaluateHarmfulness(@RequestBody OpenAIRequest openAIRequest) throws IOException {
-        return openAIService.evaluateHarmfulness(openAIRequest);
+    public String evaluateHarmfulness(@RequestBody String prompt) throws IOException {
+        return openAIService.evaluateHarmfulness(prompt);
     }
 
 

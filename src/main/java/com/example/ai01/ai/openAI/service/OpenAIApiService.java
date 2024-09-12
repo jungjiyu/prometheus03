@@ -18,6 +18,7 @@ public class OpenAIApiService {
     private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
     private final OkHttpClient client = new OkHttpClient();
 
+
     public String enhanceWriting(OpenAIRequest openAIRequest) throws IOException {
         String jsonBody = String.format(
                 "{        \"model\": \"%s\",\n" +
@@ -60,12 +61,59 @@ public class OpenAIApiService {
     }
 
 
-    public String evaluateHarmfulness(OpenAIRequest openAIRequest) throws IOException {
+    public String complete(OpenAIRequest openAIRequest) throws IOException {
         String jsonBody = String.format(
-                "{\"model\": \"gpt-4\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
-                openAIRequest.getPrompt()
+                "{        \"model\": \"%s\",\n" +
+                        "            \"messages\": [\n" +
+                        "        {\n" +
+                        "            \"role\": \"system\",\n" +
+                        "            \"content\": \"You are a helpful assistant.\"\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"role\": \"user\",\n" +
+                        "                \"content\": \"%s\"\n" +
+                        "        }\n" +
+                        "    ], \"max_tokens\": %d}",
+                openAIRequest.getModel(),
+                openAIRequest.getPrompt(),
+                openAIRequest.getMaxTokens()
         );
 
+        log.info(jsonBody);
+
+        RequestBody body = RequestBody.create(
+                MediaType.get("application/json"), jsonBody
+        );
+
+        Request request = new Request.Builder()
+                .url(OPENAI_API_URL)
+                .header("Authorization", "Bearer " + apiKey)
+                .post(body)
+                .build();
+
+
+        log.info("request: "+ request.toString());
+
+        try (Response response = client.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+                throw new IOException("Unexpected code " + response);
+            }
+            return response.body().string();
+        }
+    }
+
+
+    //gpt-4o-mini 고정 사용
+    public String evaluateHarmfulness(String prompt) throws IOException {
+        log.info("jeeeeeeeee ");
+
+        String safePrompt = prompt.replace("\"", "\\\"").replace("\n", "\\n");
+
+        String jsonBody = String.format(
+                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a content moderation assistant. Analyze the following text for any harmful, offensive, or inappropriate content and rate the harmfulness on a scale from 0 to 10.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
+                safePrompt
+        );
+        log.info("jsonBody: " + jsonBody);
         RequestBody body = RequestBody.create(
                 MediaType.get("application/json"), jsonBody
         );

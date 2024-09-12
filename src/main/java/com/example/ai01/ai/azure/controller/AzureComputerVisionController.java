@@ -15,4 +15,13 @@ public class AzureComputerVisionController {
     public String createImageCaption(@RequestParam("imageUrl") String imageUrl) {
         return azureComputerVisionService.createImageCaption(imageUrl);
     }
+
+
+    @PostMapping("/caption/kr")
+    public String createKoreanImageCaptionWithGroq(@RequestParam("imageUrl") String imageUrl) {
+        return azureComputerVisionService.createKoreanImageCaptionWithGroq(imageUrl);
+    }
+
+
+
 }

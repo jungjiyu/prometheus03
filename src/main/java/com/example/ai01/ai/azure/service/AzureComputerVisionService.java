@@ -1,5 +1,8 @@
 package com.example.ai01.ai.azure.service;
 
+import com.example.ai01.ai.groq.dto.GroqApiRequest;
+import com.example.ai01.ai.groq.service.GroqApiService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -16,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 
+@RequiredArgsConstructor
 @Slf4j
 @Service
 public class AzureComputerVisionService {
@@ -28,6 +32,10 @@ public class AzureComputerVisionService {
 
     @Value("${azure.api.key}")
     private String apiKey;
+
+    private final GroqApiService groqApiService;
+
+
 
     public String createImageCaption(String imageUrl) {
 
@@ -85,4 +93,20 @@ public class AzureComputerVisionService {
 
         return "이미지 설명을 가져올 수 없습니다.";
     }
+
+
+    public String createKoreanImageCaptionWithGroq(String imageUrl) {
+
+        String engCaption = this.createImageCaption(imageUrl);
+        GroqApiRequest groqApiRequest = GroqApiRequest.builder().
+                prompt("Please translate \'"+engCaption+"\' into Korean without any explanation.").
+                modelType("llama-3.1-70b-versatile").
+                build();
+
+        log.info("groqAPIRequest: "+groqApiRequest.toString());
+        String result = groqApiService.complete(groqApiRequest);
+        return result;
+
+    }
+
 }
