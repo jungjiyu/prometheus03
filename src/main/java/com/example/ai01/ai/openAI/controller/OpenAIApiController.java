@@ -20,14 +20,14 @@ public class OpenAIApiController {
 
     // 프롬프트 직접
     @PostMapping("/complete")
-    public String complete(@RequestBody OpenAIRequest openAIRequest) throws IOException {
+    public String complete(@RequestBody OpenAIRequest.Basic openAIRequest) throws IOException {
         return openAIService.complete(openAIRequest);
     }
 
 
     // 글을 첨삭
     @PostMapping("/advice")
-    public String enhanceWriting(@RequestBody OpenAIRequest openAIRequest) throws IOException {
+    public String enhanceWriting(@RequestBody OpenAIRequest.Basic openAIRequest) throws IOException {
         return openAIService.enhanceWriting(openAIRequest);
     }
     
@@ -36,6 +36,12 @@ public class OpenAIApiController {
     @PostMapping("/harmfulness")
     public String evaluateHarmfulness(@RequestBody String prompt) throws IOException {
         return openAIService.evaluateHarmfulness(prompt);
+    }
+
+    // 여러 문장을 하나로 합쳐 글을 작성
+    @PostMapping("/compose")
+    public String composeText(@RequestBody  OpenAIRequest.TextCompose request) throws IOException {
+        return openAIService.composeText(request);
     }
 
 

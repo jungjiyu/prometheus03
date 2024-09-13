@@ -98,7 +98,7 @@ public class AzureComputerVisionService {
     public String createKoreanImageCaptionWithGroq(String imageUrl) {
 
         String engCaption = this.createImageCaption(imageUrl);
-        GroqApiRequest groqApiRequest = GroqApiRequest.builder().
+        GroqApiRequest.Basic groqApiRequest = GroqApiRequest.Basic.builder().
                 prompt("Please translate \'"+engCaption+"\' into Korean without any explanation.").
                 modelType("llama-3.1-70b-versatile").
                 build();

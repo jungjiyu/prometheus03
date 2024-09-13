@@ -1,13 +1,30 @@
 package com.example.ai01.ai.groq.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Builder
-@Setter
-@Getter
+import java.util.List;
+
+
 public class GroqApiRequest {
-    private String prompt;
-    private String modelType;
+
+
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Basic {
+        private String prompt;
+        private String modelType;
+    }
+
+
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class TextCompose {
+        private List<String> sentences;
+        private String modelType;
+    }
+
 }
