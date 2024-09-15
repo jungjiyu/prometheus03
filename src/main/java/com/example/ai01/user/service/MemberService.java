@@ -96,8 +96,6 @@ public class MemberService {
         memberRepository.save(member);
 
 
-        // TODO: 이거 임시로 주석처리한건데 나중에 주석 풀기
-        /*
         // Grafana에서 조직 생성, 사용자 추가
         grafanaService.createGrafanaUser(member.getUsername(), member.getEmail(), request.getPassword());
 
@@ -116,7 +114,6 @@ public class MemberService {
         grafanaService.createDashboardForOrganization(orgId, dashboardJson);
 
 
-         */
         return "User registered successfully";
     }
 
